@@ -6,7 +6,7 @@ import { UserPlus, Play } from 'lucide-react';
 import PhoneMockup from './PhoneMockup';
 import DecoderText from './DecoderText';
 
-export default function Hero() {
+export default function Hero({ onJoinWaitlist }) {
   const containerRef = useRef(null);
 
   useGSAP(() => {
@@ -82,7 +82,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="flex flex-wrap gap-4 pt-2"
           >
-            <button className="group px-8 md:px-10 py-4 md:py-5 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-base md:text-lg cyber-shadow btn-glow hover:scale-[1.03] transition-all duration-300 flex items-center gap-3">
+            <button onClick={onJoinWaitlist} className="group px-8 md:px-10 py-4 md:py-5 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-base md:text-lg cyber-shadow btn-glow hover:scale-[1.03] transition-all duration-300 flex items-center gap-3">
               Join the waitlist
               <UserPlus size={20} className="group-hover:translate-x-0.5 transition-transform" />
             </button>

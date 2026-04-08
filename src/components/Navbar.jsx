@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbar({ onJoinWaitlist }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -45,12 +45,12 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a
-            href="#cta"
+          <button
+            onClick={onJoinWaitlist}
             className="px-6 py-2.5 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-sm btn-glow transition-all hover:scale-105"
           >
             Join Waitlist
-          </a>
+          </button>
         </div>
 
         {/* Mobile toggle */}
@@ -83,13 +83,12 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#cta"
-                onClick={() => setMobileOpen(false)}
+              <button
+                onClick={() => { setMobileOpen(false); onJoinWaitlist(); }}
                 className="mt-2 px-6 py-3 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-sm text-center"
               >
                 Join Waitlist
-              </a>
+              </button>
             </div>
           </motion.div>
         )}
